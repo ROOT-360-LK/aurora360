@@ -233,7 +233,7 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg" />
+                <Image alt="Logo" src="icon.jpg" width={32} height={32} />
                 <span className="text-lg font-bold">Aurora 360</span>
               </div>
               <p className="text-sm text-muted-foreground">
