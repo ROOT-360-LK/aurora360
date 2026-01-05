@@ -1,0 +1,84 @@
+name: Deploy Next.js site to Pages (with Bun)
+
+on:
+  push:
+    branches: ["main"]
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Set Bun variables
+        id: set-bun-vars
+        run: |
+          echo "manager=bun" >> $GITHUB_OUTPUT
+          echo "install_command=install --frozen-lockfile" >> $GITHUB_OUTPUT
+          echo "build_runner=bun run" >> $GITHUB_OUTPUT
+          
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest # Or specify a version like 1.x
+          # Bun does not use the default cache key format, but this line ensures 
+          # the setup-bun action knows the package manager for potential internal caching.
+          cache: ${{ steps.set-bun-vars.outputs.manager }} 
+          
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          # Automatically inject basePath in your Next.js configuration file and disable
+          # server side image optimization.
+          static_site_generator: next
+          
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            .next/cache
+            # Bun's module cache location can also be cached, check your setup if needed.
+            # ~/.bun/install/cache 
+          # Note: Bun uses 'bun.lockb' for its lock file.
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/bun.lockb') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          # Restore from a prior cache if lock file didn't change.
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/bun.lockb') }}-
+            
+      - name: Install dependencies
+        # Uses 'bun install --frozen-lockfile'
+        run: ${{ steps.set-bun-vars.outputs.manager }} ${{ steps.set-bun-vars.outputs.install_command }}
+        
+      - name: Build with Next.js
+        # Uses 'bun run next build'
+        run: ${{ steps.set-bun-vars.outputs.build_runner }} next build
+        
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
