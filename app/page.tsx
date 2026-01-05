@@ -11,7 +11,7 @@ export default function Home() {
       <header className="border-b bg-white/50 backdrop-blur-sm dark:bg-slate-900/50 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Image alt="Logo" src="/icon.png" width={32} height={32} />
+            <Image alt="Logo" src="public/icon.png" width={32} height={32} />
             <span className="text-xl font-bold">Aurora 360 </span>
             <a href="https://root-360-lk.github.io" target="_blank" rel="noopener noreferrer"><Badge variant="secondary" className="ml-2">By Root360</Badge></a>
           </div>
