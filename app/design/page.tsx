@@ -12,7 +12,7 @@ export default function DesignPage() {
       <header className="border-b bg-white/50 backdrop-blur-sm dark:bg-slate-900/50 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Image alt="Logo" src="/icon.jpg" width={32} height={32} />
+            <Image alt="Logo" src="icon.jpg" width={32} height={32} />
             <span className="text-xl font-bold">Aurora 360</span>
             <Badge variant="secondary" className="ml-2">By Root360</Badge>
           </div>
@@ -37,7 +37,7 @@ export default function DesignPage() {
             <Palette className="w-3 h-3 mr-1" />
             Design Portfolio
           </Badge>
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          <h1 className="text-5xl pb-4 md:text-6xl font-bold tracking-tight bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
             Creative Design Work
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">

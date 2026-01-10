@@ -37,7 +37,7 @@ export default function MarketingPage() {
             <TrendingUp className="w-3 h-3 mr-1" />
             Marketing Portfolio
           </Badge>
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+          <h1 className="text-5xl pb-4 md:text-6xl font-bold tracking-tight bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
             Digital Marketing Excellence
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
