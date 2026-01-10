@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, BarChart3, MessageCircle, TrendingUp, Users, Zap, Target } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -16,6 +17,9 @@ export default function Home() {
             <a href="https://root-360-lk.github.io" target="_blank" rel="noopener noreferrer"><Badge variant="secondary" className="ml-2">By Root360</Badge></a>
           </div>
           <nav className="hidden md:flex items-center gap-6">
+            <Link href="/design" className="text-sm font-medium hover:text-blue-600 transition-colors">Design</Link>
+            <Link href="/marketing" className="text-sm font-medium hover:text-blue-600 transition-colors">Marketing</Link>
+            <Link href="/printing" className="text-sm font-medium hover:text-blue-600 transition-colors">Printing</Link>
             <a href="#services" className="text-sm font-medium hover:text-blue-600 transition-colors">Services</a>
             <a href="#about" className="text-sm font-medium hover:text-blue-600 transition-colors">About</a>
             <a href="#contact" className="text-sm font-medium hover:text-blue-600 transition-colors">Contact</a>
@@ -161,7 +165,7 @@ export default function Home() {
       {/* About Section */}
       <section id="about" className="container mx-auto px-4 py-20 bg-slate-50 dark:bg-slate-900/50">
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          <h2 className="text-4xl font-bold mb-4">Why Choose Aurors 360</h2>
+          <h2 className="text-4xl font-bold mb-4">Why Aurora 360</h2>
           <p className="text-xl text-muted-foreground">
             As a subsidiary of Root360, we combine innovative thinking with proven methodologies. 
             Our team of digital marketing experts stays ahead of industry trends to deliver campaigns 
